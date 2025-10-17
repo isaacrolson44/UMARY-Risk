@@ -1,6 +1,7 @@
 # UMARY-Risk
 University of Mary Risk Management Portal
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -73,59 +74,75 @@ University of Mary Risk Management Portal
       margin: 0;
     }
 
-    /* Collapsible container */
-    .collapsible {
-      background-color: #e6f0ff;
-      color: #0033A0;
-      cursor: pointer;
-      padding: 15px 20px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .collapsible:hover,
-    .collapsible:focus {
-      background-color: #cce0ff;
-    }
-    .collapsible:after {
-      content: '\25bc'; /* Down arrow */
-      font-size: 1rem;
-      transition: transform 0.3s ease;
-      color: #0033A0;
-    }
-    .collapsible.active:after {
-      transform: rotate(180deg);
+    /* Areas of Risk Management container */
+    #areas-risk-management {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
     }
 
-    /* Collapsible content */
-    .content {
-      padding: 0 20px 20px 20px;
+    /* Individual risk area card */
+    .risk-card {
+      background-color: #f7fbff;
+      border: 2px solid #0033A0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgb(0 51 160 / 0.15);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .risk-card:hover,
+    .risk-card:focus {
+      box-shadow: 0 8px 16px rgb(0 51 160 / 0.3);
+      border-color: #FF6A00;
+      outline: none;
+    }
+
+    .risk-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #0033A0;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Icon style */
+    .risk-icon {
+      font-size: 1.8rem;
+      color: #FF6A00;
+    }
+
+    /* Content inside card, initially hidden */
+    .risk-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease;
-      background-color: #f7fbff;
-      border-radius: 0 0 6px 6px;
-      margin-bottom: 20px;
-    }
-    .content ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-    .content li {
-      margin-bottom: 12px;
-    }
-    .content strong {
+      transition: max-height 0.4s ease;
       color: #002366;
+      font-size: 1rem;
+      margin-top: 10px;
+      flex-grow: 1;
+    }
+
+    /* Show content when active */
+    .risk-card.active .risk-content {
+      max-height: 500px; /* enough to show content */
+    }
+
+    /* List inside content */
+    .risk-content ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .risk-content li {
+      margin-bottom: 8px;
     }
 
     /* Resources buttons */
@@ -256,49 +273,50 @@ University of Mary Risk Management Portal
 
     <section>
       <h2>Areas of Risk Management</h2>
+      <div id="areas-risk-management">
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="property-content">
+          <h3><span class="risk-icon">🏢</span> Property &amp; Casualty Insurance</h3>
+          <div class="risk-content" id="property-content" role="region" aria-live="polite">
+            <ul>
+              <li><strong>Campus Property Insurance</strong><br />Protecting University of Mary’s physical assets including buildings, equipment, and vehicles.</li>
+              <li><strong>Liability Insurance</strong><br />Coverage for general liability, professional liability, and special events.</li>
+              <li><strong>Vehicle Insurance</strong><br />Policies for university-owned vehicles and driver safety programs.</li>
+            </ul>
+          </div>
+        </div>
 
-      <button class="collapsible" aria-expanded="false" aria-controls="property-content" id="property-btn">
-        1. Property &amp; Casualty Insurance
-      </button>
-      <div class="content" id="property-content" role="region" aria-labelledby="property-btn">
-        <ul>
-          <li><strong>Campus Property Insurance</strong><br />Protecting University of Mary’s physical assets including buildings, equipment, and vehicles.</li>
-          <li><strong>Liability Insurance</strong><br />Coverage for general liability, professional liability, and special events.</li>
-          <li><strong>Vehicle Insurance</strong><br />Policies for university-owned vehicles and driver safety programs.</li>
-        </ul>
-      </div>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="health-content">
+          <h3><span class="risk-icon">🩺</span> Health &amp; Safety</h3>
+          <div class="risk-content" id="health-content" role="region" aria-live="polite">
+            <ul>
+              <li><strong>Workplace Safety Programs</strong><br />Training and resources to prevent workplace injuries and illnesses.</li>
+              <li><strong>Environmental Health &amp; Safety</strong><br />Compliance with environmental regulations and hazardous materials management.</li>
+              <li><strong>Emergency Preparedness</strong><br />Planning and response for natural disasters, fire, and other emergencies.</li>
+            </ul>
+          </div>
+        </div>
 
-      <button class="collapsible" aria-expanded="false" aria-controls="health-content" id="health-btn">
-        2. Health &amp; Safety
-      </button>
-      <div class="content" id="health-content" role="region" aria-labelledby="health-btn">
-        <ul>
-          <li><strong>Workplace Safety Programs</strong><br />Training and resources to prevent workplace injuries and illnesses.</li>
-          <li><strong>Environmental Health &amp; Safety</strong><br />Compliance with environmental regulations and hazardous materials management.</li>
-          <li><strong>Emergency Preparedness</strong><br />Planning and response for natural disasters, fire, and other emergencies.</li>
-        </ul>
-      </div>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="compliance-content">
+          <h3><span class="risk-icon">⚖️</span> Compliance &amp; Legal Risk</h3>
+          <div class="risk-content" id="compliance-content" role="region" aria-live="polite">
+            <ul>
+              <li><strong>Regulatory Compliance</strong><br />Ensuring adherence to federal, state, and local laws affecting campus operations.</li>
+              <li><strong>Contract Review</strong><br />Risk assessment and review of contracts and agreements.</li>
+              <li><strong>Privacy &amp; Data Security</strong><br />Protecting sensitive information and maintaining data privacy standards.</li>
+            </ul>
+          </div>
+        </div>
 
-      <button class="collapsible" aria-expanded="false" aria-controls="compliance-content" id="compliance-btn">
-        3. Compliance &amp; Legal Risk
-      </button>
-      <div class="content" id="compliance-content" role="region" aria-labelledby="compliance-btn">
-        <ul>
-          <li><strong>Regulatory Compliance</strong><br />Ensuring adherence to federal, state, and local laws affecting campus operations.</li>
-          <li><strong>Contract Review</strong><br />Risk assessment and review of contracts and agreements.</li>
-          <li><strong>Privacy &amp; Data Security</strong><br />Protecting sensitive information and maintaining data privacy standards.</li>
-        </ul>
-      </div>
-
-      <button class="collapsible" aria-expanded="false" aria-controls="student-content" id="student-btn">
-        4. Student &amp; Campus Risk
-      </button>
-      <div class="content" id="student-content" role="region" aria-labelledby="student-btn">
-        <ul>
-          <li><strong>Student Conduct &amp; Risk</strong><br />Programs to promote responsible behavior and reduce student-related risks.</li>
-          <li><strong>Event Risk Management</strong><br />Guidelines and support for safe planning and execution of campus events.</li>
-          <li><strong>Travel Risk Management</strong><br />Policies and resources for domestic and international travel by students and staff.</li>
-        </ul>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="student-content">
+          <h3><span class="risk-icon">🎓</span> Student &amp; Campus Risk</h3>
+          <div class="risk-content" id="student-content" role="region" aria-live="polite">
+            <ul>
+              <li><strong>Student Conduct &amp; Risk</strong><br />Programs to promote responsible behavior and reduce student-related risks.</li>
+              <li><strong>Event Risk Management</strong><br />Guidelines and support for safe planning and execution of campus events.</li>
+              <li><strong>Travel Risk Management</strong><br />Policies and resources for domestic and international travel by students and staff.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -356,35 +374,32 @@ University of Mary Risk Management Portal
   </footer>
 
   <script>
-    // Collapsible functionality with accessibility
-    document.querySelectorAll('.collapsible').forEach(button => {
-      button.addEventListener('click', () => {
-        const content = document.getElementById(button.getAttribute('aria-controls'));
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-        if (isExpanded) {
-          content.style.maxHeight = null;
-          button.setAttribute('aria-expanded', 'false');
-          button.classList.remove('active');
-        } else {
-          // Close other open collapsibles (optional)
-          document.querySelectorAll('.collapsible.active').forEach(activeBtn => {
-            activeBtn.setAttribute('aria-expanded', 'false');
-            document.getElementById(activeBtn.getAttribute('aria-controls')).style.maxHeight = null;
-            activeBtn.classList.remove('active');
-          });
-
-          content.style.maxHeight = content.scrollHeight + 'px';
-          button.setAttribute('aria-expanded', 'true');
-          button.classList.add('active');
+    // Toggle risk card content on click or keyboard (Enter/Space)
+    document.querySelectorAll('.risk-card').forEach(card => {
+      card.addEventListener('click', () => {
+        toggleCard(card);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleCard(card);
         }
       });
-
-      // Initialize collapsed state
-      const content = document.getElementById(button.getAttribute('aria-controls'));
-      content.style.maxHeight = null;
-      button.setAttribute('aria-expanded', 'false');
     });
+
+    function toggleCard(card) {
+      const isActive = card.classList.contains('active');
+      // Close all cards
+      document.querySelectorAll('.risk-card').forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-expanded', 'false');
+      });
+      // Toggle current card
+      if (!isActive) {
+        card.classList.add('active');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }
 
     // Incident form submission
     const form = document.getElementById('incidentForm');
@@ -422,3 +437,4 @@ University of Mary Risk Management Portal
   </script>
 </body>
 </html>
+
