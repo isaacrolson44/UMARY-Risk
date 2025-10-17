@@ -1,7 +1,6 @@
 # UMARY-Risk
 University of Mary Risk Management Portal
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
