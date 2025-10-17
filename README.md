@@ -15,223 +15,277 @@ University of Mary Risk Management Portal
     body {
       font-family: 'Open Sans', Arial, sans-serif;
       margin: 0;
-      background-color: #f5f7fa;
-      color: #333;
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+      color: #222;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     a {
       color: #FF6A00; /* University of Mary Orange */
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a:hover,
     a:focus {
+      color: #cc5600;
       text-decoration: underline;
+      outline: none;
     }
 
     /* Header */
     header {
       background-color: #0033A0; /* University of Mary Blue */
       color: white;
-      padding: 20px 30px;
+      padding: 20px 40px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
+      box-shadow: 0 4px 8px rgba(0, 51, 160, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header img {
-      height: 50px;
+      height: 70px;
       width: auto;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover,
+    header img:focus {
+      transform: scale(1.05);
+      outline: none;
     }
     header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 0;
       flex: 1 1 auto;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     /* Main container */
     main {
-      max-width: 960px;
-      margin: 30px auto 60px;
+      max-width: 1100px;
+      margin: 40px auto 80px;
       background: white;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 51, 160, 0.15);
+      flex-grow: 1;
     }
 
     /* Section headings */
     h2 {
       color: #0033A0;
-      border-bottom: 3px solid #0033A0;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      font-weight: 700;
-      font-size: 1.6rem;
+      border-bottom: 4px solid #FF6A00;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
     h3 {
-      font-weight: 600;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.3rem;
       margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #003366;
     }
 
     /* Areas of Risk Management container */
     #areas-risk-management {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
     }
 
     /* Individual risk area card */
     .risk-card {
       background-color: #f7fbff;
-      border: 2px solid #0033A0;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgb(0 51 160 / 0.15);
+      border: 3px solid #0033A0;
+      border-radius: 16px;
+      padding: 25px 30px;
+      box-shadow: 0 6px 16px rgba(0, 51, 160, 0.2);
       cursor: pointer;
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
       display: flex;
       flex-direction: column;
       height: 100%;
+      position: relative;
+      overflow: hidden;
     }
-
     .risk-card:hover,
     .risk-card:focus {
-      box-shadow: 0 8px 16px rgb(0 51 160 / 0.3);
+      box-shadow: 0 12px 28px rgba(255, 106, 0, 0.5);
       border-color: #FF6A00;
+      transform: translateY(-6px);
       outline: none;
-    }
-
-    .risk-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: #0033A0;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      z-index: 10;
     }
 
     /* Icon style */
     .risk-icon {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #FF6A00;
+      flex-shrink: 0;
     }
 
     /* Content inside card, initially hidden */
     .risk-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
       color: #002366;
-      font-size: 1rem;
-      margin-top: 10px;
+      font-size: 1.05rem;
+      margin-top: 15px;
       flex-grow: 1;
+      opacity: 0;
     }
 
     /* Show content when active */
     .risk-card.active .risk-content {
-      max-height: 500px; /* enough to show content */
+      max-height: 600px; /* enough to show content */
+      opacity: 1;
     }
 
     /* List inside content */
     .risk-content ul {
-      padding-left: 20px;
+      padding-left: 22px;
       margin: 0;
+      list-style-type: disc;
     }
-
     .risk-content li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .risk-content strong {
+      color: #001f4d;
     }
 
     /* Resources buttons */
     .resources {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
+      gap: 20px;
+      margin-top: 15px;
     }
     .resources a {
       background-color: #FF6A00;
       color: white;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgb(255 106 0 / 0.4);
-      transition: background-color 0.3s ease;
-      flex: 1 1 180px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(255, 106, 0, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      flex: 1 1 220px;
       text-align: center;
+      font-size: 1.1rem;
+      user-select: none;
     }
     .resources a:hover,
     .resources a:focus {
       background-color: #cc5600;
+      box-shadow: 0 6px 16px rgba(204, 86, 0, 0.7);
+      outline: none;
     }
 
     /* Contact info */
     .contact-info p {
-      margin: 6px 0;
-      font-size: 1rem;
+      margin: 8px 0;
+      font-size: 1.1rem;
+      color: #003366;
     }
     .contact-info a {
-      font-weight: 600;
+      font-weight: 700;
       color: #FF6A00;
+      transition: color 0.3s ease;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      color: #cc5600;
+      outline: none;
     }
 
     /* News & updates */
     .news-updates {
       background-color: #e6f0ff;
-      padding: 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 25px 30px;
+      border-radius: 12px;
+      font-size: 1.1rem;
       color: #0033A0;
-      box-shadow: inset 0 0 8px rgb(0 51 160 / 0.15);
+      box-shadow: inset 0 0 12px rgba(0, 51, 160, 0.2);
+      font-style: italic;
+      user-select: none;
     }
 
     /* Incident form */
     form label {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 6px;
+      color: #003366;
     }
     form input[type="text"],
     form input[type="email"],
     form textarea {
       width: 100%;
-      padding: 8px 10px;
-      margin-top: 4px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
       resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form textarea:focus {
+      border-color: #FF6A00;
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 106, 0, 0.6);
     }
     form button[type="submit"] {
       background-color: #FF6A00;
       color: white;
       border: none;
-      padding: 12px 25px;
-      font-size: 1.1rem;
-      border-radius: 6px;
+      padding: 14px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
       cursor: pointer;
-      font-weight: 700;
-      transition: background-color 0.3s ease;
+      font-weight: 800;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      box-shadow: 0 6px 14px rgba(255, 106, 0, 0.6);
     }
     form button[type="submit"]:hover,
     form button[type="submit"]:focus {
       background-color: #cc5600;
+      box-shadow: 0 8px 20px rgba(204, 86, 0, 0.8);
+      outline: none;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       main {
-        padding: 20px 20px 40px;
-        margin: 20px 10px 60px;
+        padding: 30px 25px;
+        margin: 20px 15px 80px;
       }
       header {
         justify-content: center;
         text-align: center;
       }
       header h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
       .resources a {
         flex: 1 1 100%;
@@ -243,20 +297,17 @@ University of Mary Risk Management Portal
       background-color: #0033A0;
       color: white;
       text-align: center;
-      padding: 15px 20px;
-      font-size: 0.9rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      box-shadow: 0 -2px 8px rgb(0 0 0 / 0.15);
+      padding: 18px 20px;
+      font-size: 1rem;
       user-select: none;
-      z-index: 100;
+      box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.25);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://www.umary.edu/_resources/images/umary-logo.svg" alt="University of Mary Logo" />
+    <img src="https://www.umary.edu/_resources/images/umary-logo.svg" alt="University of Mary Logo" tabindex="0" />
+    <img src="https://i.imgur.com/0Xq6Xqv.png" alt="University of Mary Marauders Logo" tabindex="0" style="height:70px; width:auto;" />
     <h1>University of Mary Risk Management</h1>
   </header>
 
@@ -272,9 +323,9 @@ University of Mary Risk Management Portal
 
     <section>
       <h2>Areas of Risk Management</h2>
-      <div id="areas-risk-management">
-        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="property-content">
-          <h3><span class="risk-icon">🏢</span> Property &amp; Casualty Insurance</h3>
+      <div id="areas-risk-management" role="list">
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="property-content" aria-label="Property and Casualty Insurance details">
+          <h3><span class="risk-icon" aria-hidden="true">🏢</span> Property &amp; Casualty Insurance</h3>
           <div class="risk-content" id="property-content" role="region" aria-live="polite">
             <ul>
               <li><strong>Campus Property Insurance</strong><br />Protecting University of Mary’s physical assets including buildings, equipment, and vehicles.</li>
@@ -284,8 +335,8 @@ University of Mary Risk Management Portal
           </div>
         </div>
 
-        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="health-content">
-          <h3><span class="risk-icon">🩺</span> Health &amp; Safety</h3>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="health-content" aria-label="Health and Safety details">
+          <h3><span class="risk-icon" aria-hidden="true">🩺</span> Health &amp; Safety</h3>
           <div class="risk-content" id="health-content" role="region" aria-live="polite">
             <ul>
               <li><strong>Workplace Safety Programs</strong><br />Training and resources to prevent workplace injuries and illnesses.</li>
@@ -295,8 +346,8 @@ University of Mary Risk Management Portal
           </div>
         </div>
 
-        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="compliance-content">
-          <h3><span class="risk-icon">⚖️</span> Compliance &amp; Legal Risk</h3>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="compliance-content" aria-label="Compliance and Legal Risk details">
+          <h3><span class="risk-icon" aria-hidden="true">⚖️</span> Compliance &amp; Legal Risk</h3>
           <div class="risk-content" id="compliance-content" role="region" aria-live="polite">
             <ul>
               <li><strong>Regulatory Compliance</strong><br />Ensuring adherence to federal, state, and local laws affecting campus operations.</li>
@@ -306,8 +357,8 @@ University of Mary Risk Management Portal
           </div>
         </div>
 
-        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="student-content">
-          <h3><span class="risk-icon">🎓</span> Student &amp; Campus Risk</h3>
+        <div class="risk-card" tabindex="0" aria-expanded="false" role="button" aria-controls="student-content" aria-label="Student and Campus Risk details">
+          <h3><span class="risk-icon" aria-hidden="true">🎓</span> Student &amp; Campus Risk</h3>
           <div class="risk-content" id="student-content" role="region" aria-live="polite">
             <ul>
               <li><strong>Student Conduct &amp; Risk</strong><br />Programs to promote responsible behavior and reduce student-related risks.</li>
@@ -332,14 +383,14 @@ University of Mary Risk Management Portal
     <section>
       <h2>Incident Reporting</h2>
       <form id="incidentForm" action="/api/report" method="POST" novalidate>
-        <label for="name">Name<span aria-hidden="true">*</span>:</label><br />
-        <input type="text" id="name" name="name" required /><br />
+        <label for="name">Name<span aria-hidden="true">*</span>:</label>
+        <input type="text" id="name" name="name" required aria-required="true" />
 
-        <label for="email">Email<span aria-hidden="true">*</span>:</label><br />
-        <input type="email" id="email" name="email" required /><br />
+        <label for="email">Email<span aria-hidden="true">*</span>:</label>
+        <input type="email" id="email" name="email" required aria-required="true" />
 
-        <label for="details">Incident Details<span aria-hidden="true">*</span>:</label><br />
-        <textarea id="details" name="details" rows="5" required></textarea><br />
+        <label for="details">Incident Details<span aria-hidden="true">*</span>:</label>
+        <textarea id="details" name="details" rows="5" required aria-required="true"></textarea>
 
         <button type="submit">Submit Report</button>
       </form>
