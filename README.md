@@ -41,6 +41,7 @@ University of Mary Risk Management Portal
     header img {
       height: 50px;
       width: auto;
+      margin-right: 10px;
     }
     header h1 {
       font-size: 1.8rem;
@@ -256,7 +257,8 @@ University of Mary Risk Management Portal
 </head>
 <body>
   <header>
-    <img src="https://www.umary.edu/_resources/images/umary-logo.svg" alt="University of Mary Logo" />
+    <img src="https://www.umary.edu/_resources/images/umary-logo.svg" alt="University of Mary Logo" style="height:50px; width:auto; margin-right:10px;" />
+    <img src="https://i.imgur.com/0Xq6Xqv.png" alt="University of Mary Marauders Logo" style="height:60px; width:auto; margin-right:10px;" />
     <h1>University of Mary Risk Management</h1>
   </header>
 
@@ -436,4 +438,3 @@ University of Mary Risk Management Portal
   </script>
 </body>
 </html>
-
